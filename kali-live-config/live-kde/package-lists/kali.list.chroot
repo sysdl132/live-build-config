@@ -1,19 +1,19 @@
-# Live image
-# You always want these:
+# Live image with KDE Plasma
+#
+# ./build.sh --live --variant kde
+
+## Live images always want these
 kali-linux-core
 kali-desktop-live
 
-# Metapackages
+## Metapackages
 # You can customize the set of Kali metapackages (groups of tools) to install
-# For the complete list see: https://tools.kali.org/kali-metapackages
-#kali-linux-core
-#kali-tools-top10
+# For the complete list see: https://www.kali.org/tools/kali-meta/
 kali-linux-default
-#kali-linux-large
-#kali-linux-everything
 
-# Graphical desktop
+## Graphical desktop
+# For the complete list see: https://www.kali.org/docs/general-use/metapackages/
 kali-desktop-kde
 
-# Kali applications
+## Extra Kali applications
 #<package>

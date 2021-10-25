@@ -1,19 +1,19 @@
-# Live image
-# You always want these:
+# Live image with Xfce with kali-linux-large
+#
+# ./build.sh --live --variant xfce-large
+
+## Live images always want these
 kali-linux-core
 kali-desktop-live
 
-# Metapackages
+## Metapackages
 # You can customize the set of Kali metapackages (groups of tools) to install
-# For the complete list see: https://tools.kali.org/kali-metapackages
-#kali-linux-core
-#kali-tools-top10
-#kali-linux-default
+# For the complete list see: https://www.kali.org/tools/kali-meta/
 kali-linux-large
-#kali-linux-everything
 
-# Graphical desktop
+## Graphical desktop
+# For the complete list see: https://www.kali.org/docs/general-use/metapackages/
 kali-desktop-xfce
 
-# Kali applications
+## Extra Kali applications
 #<package>
