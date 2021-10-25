@@ -338,8 +338,8 @@ set +e
 
 case "$IMAGE_TYPE" in
 	live)
-		debug "Stage 1/2 - Config"
 		# Copy over any files to use rather than default template for live-build
+		debug "Stage 1/3 - Preparation"
 		cp -aT kali-live-config/common/lb ./tmp/auto
 		[ $? -eq 0 ] || failure
 		# Check for mirror
@@ -349,11 +349,12 @@ case "$IMAGE_TYPE" in
 			[ $? -eq 0 ] || failure
 		fi
 
+		debug "Stage 2/3 - lb config (kali-live-config/common/lb)"
 		cd tmp/
 		run_and_log lb config -a $KALI_ARCH $KALI_CONFIG_OPTS "$@"
 		[ $? -eq 0 ] || failure
 
-		debug "Stage 2/2 - Build"
+		debug "Stage 3/3 - lb build"
 		run_and_log $SUDO lb build
 		if [ $? -ne 0 ] || [ ! -e $IMAGE_NAME ]; then
 			failure
