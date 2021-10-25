@@ -1,13 +1,12 @@
 #!/bin/sh
-
-# The reference version of this script is maintained in
-# ./live-build-config/kali-config/common/includes.installer/kali-finish-install
 #
 # It is used in multiple places to finish configuring the target system
 # and build.sh copies it where required (in the simple-cdd configuration
 # and in the live-build configuration).
 #
 # This file is used for both --live and --installer
+# The reference version of this script is maintained in:
+# ./kali-live-config/common/includes.installer/kali-finish-install
 #
 
 configure_sources_list() {
