@@ -130,6 +130,24 @@ clean() {
 	run_and_log $SUDO rm -rf "$(pwd)/tmp"
 }
 
+# check_install_program <binary> [<package-name>]
+check_install_program() {
+	bin=$1
+	if [ -z $2 ]; then
+		package=$1
+		debug "check_install_program: $bin"
+	else
+		package=$2
+		debug "check_install_program: $bin ($package)"
+	fi
+
+	if ! command -v $bin >/dev/null 2>&1; then
+		debug "Missing: $package"
+		run_and_log $SUDO apt-get update -qq
+		run_and_log $SUDO apt-get -yqq install $package
+	fi
+}
+
 print_help() {
 	echo "Usage: $0 [<option>...]"
 	echo
@@ -176,6 +194,12 @@ while true; do
 		*) echo "ERROR: Invalid command-line option: $1" >&2; exit 1; ;;
 		esac
 done
+
+# Make sure required programs are installed
+check_install_program cdebootstrap
+check_install_program curl
+check_install_program lb live-build
+check_install_program simple-cdd
 
 # Set default values
 KALI_ARCH=${KALI_ARCH:-$HOST_ARCH}
