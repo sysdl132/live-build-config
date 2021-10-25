@@ -10,7 +10,7 @@ set -o pipefail # Bashism
 KALI_DIST="kali-rolling"
 KALI_VERSION=""
 KALI_VARIANT="default"
-IMAGE_TYPE="live"
+IMAGE_TYPE="installer"
 TARGET_DIR="$(dirname $0)/images"
 TARGET_SUBDIR=""
 SUDO="sudo"
