@@ -224,7 +224,7 @@ if [ "$HOST_ARCH" != "$KALI_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
 		amd64/i386|i386/amd64)
 		;;
 		*)
-			echo "Can't build $KALI_ARCH image on $HOST_ARCH system." >&2
+			echo "Can't build $KALI_ARCH image on $HOST_ARCH system" >&2
 			exit 1
 		;;
 	esac
@@ -409,7 +409,7 @@ case "$IMAGE_TYPE" in
 		[ $? -eq 0 ] || failure
 
 		# Grub is the only supported bootloader on arm64
-		# so ensure it's on the iso for arm64.
+		# so ensure it's on the iso for arm64
 		if [ "$KALI_ARCH" = "arm64" ]; then
 			debug "arm64 GRUB"
 			echo "grub-efi-arm64" >> tmp/common/profiles/kali.downloads
