@@ -2,7 +2,8 @@
 
 lb clean noauto "$@"
 
-rm -fv config/binary \
+rm -fv \
+	config/binary \
 	config/bootstrap \
 	config/chroot \
 	config/common \
