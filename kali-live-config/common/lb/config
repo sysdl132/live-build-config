@@ -105,15 +105,17 @@ esac
 # Setup configuration files from variant and options
 
 # Drop all files that a former run might have put into place
-for file in $(cd kali-config && find ./common ./variant-* -type f); do
-    file=${file#./*/}
-    rm -fv config/$file
+# ./kali-live-config/{common,live-*}
+for file in $(cd ../kali-live-config/ && find ./common ./live-* -type f); do
+	file=${file#./*/}
+	rm -fv config/$file
 done
 rm -fv config/archives/kali-proposed-updates.list.*
 
 # Copy over all files from official kali configuration
-cp -rT kali-config/common config
-[ ! -d kali-config/variant-$variant ] || cp -rTL kali-config/variant-$variant config
+# kali-live-config/common config
+cp -rT ../kali-live-config/common config
+[ ! -d ../kali-live-config/live-$variant ] || cp -rTL ../kali-live-config/live-$variant config
 
 if [ -n "$enable_pu" ]; then
 	mkdir -p config/archives

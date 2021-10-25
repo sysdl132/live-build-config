@@ -1,31 +1,22 @@
-# Directories
-.build/*
-binary/*
-binary.*/*
-cache/*
-chroot/*
-config/*
-images
-local/*
-simple-cdd/images/*
-simple-cdd/tmp/*
-# Files
+# Image output directory
+images/*
+kali-installer-config/common/images/*
+# Working directory
+tmp/*
+# Local mirror
 .mirror
+# Build Log
 build.log
+# Live build
 chroot.files
 chroot.packages.install
 chroot.packages.live
-config/binary
-config/bootstrap
-config/common
-config/source
 live-image-*.contents
 live-image-*.files
 live-image-*.hybrid.iso.zsync
 live-image-*.packages
 # Overwritten due to build.sh
-simple-cdd/debian-cd/*
-simple-cdd/profiles/kali.downloads
+kali-installer-config/common/profiles/kali.downloads
 # Miscellaneous
 .lock
 .stage
