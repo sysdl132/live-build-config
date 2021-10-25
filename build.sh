@@ -163,10 +163,6 @@ print_help() {
 # Change directory into where the script is
 cd $(dirname $0)/
 
-BUILD_LOG="$(pwd)/build.log"
-debug "BUILD_LOG: $BUILD_LOG"
-# Create empty file
-: > "$BUILD_LOG"
 # Allowed command line options
 . .getopt.sh
 
@@ -194,6 +190,12 @@ while true; do
 		*) echo "ERROR: Invalid command-line option: $1" >&2; exit 1; ;;
 		esac
 done
+
+# Define log file
+BUILD_LOG="$(pwd)/build.log"
+debug "BUILD_LOG: $BUILD_LOG"
+# Create empty file
+: > "$BUILD_LOG"
 
 # Make sure required programs are installed
 check_install_program cdebootstrap
