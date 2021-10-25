@@ -1,4 +1,7 @@
 # Various preseeding for auto-installed packages
+#
+# This preseed file is only used with --live's installer
+#
 
 # Do not register it in inetd so that its status can be controlled
 # individually
