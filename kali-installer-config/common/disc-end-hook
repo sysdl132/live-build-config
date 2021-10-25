@@ -11,7 +11,7 @@ ARCHES=$5
 cd $CDDIR
 
 fix_branding() {
-    sed -i -e 's|Debian GNU/Linux|Kali Linux|g' \
+	sed -i -e 's|Debian GNU/Linux|Kali Linux|g' \
 	-e 's|Kali GNU/Linux|Kali Linux|g' \
 	-e 's|Debian kali-rolling|Kali Rolling|g' \
 	-e 's|Debian|Kali|g' \
@@ -21,14 +21,14 @@ fix_branding() {
 
 # Rebrand Debian into Kali
 if [ -e ../boot$DISKNUM/isolinux/menu.cfg ]; then
-    fix_branding ../boot$DISKNUM/isolinux/menu.cfg \
+	fix_branding ../boot$DISKNUM/isolinux/menu.cfg \
 		 ../boot$DISKNUM/isolinux/*.txt
 fi
 if [ -d boot/grub/theme ] && [ -s boot/grub/theme ]; then
-    fix_branding boot/grub/theme/*
+	fix_branding boot/grub/theme/*
 fi
 if [ -e autorun.inf ]; then
-    fix_branding autorun.inf
+	fix_branding autorun.inf
 fi
 
 # Replace Debian specific documentation
@@ -51,9 +51,9 @@ EOF
 
 # Replace kali-last-snapshot with kali-rolling
 if [ -e dists/kali-last-snapshot ]; then
-    mv dists/kali-last-snapshot dists/kali-rolling
-    rm -f dists/stable && ln -sf kali-rolling dists/stable
-    sed -i -e 's|kali-last-snapshot|kali-rolling|g' \
+	mv dists/kali-last-snapshot dists/kali-rolling
+	rm -f dists/stable && ln -sf kali-rolling dists/stable
+	sed -i -e 's|kali-last-snapshot|kali-rolling|g' \
 	dists/kali-rolling/Release
 fi
 

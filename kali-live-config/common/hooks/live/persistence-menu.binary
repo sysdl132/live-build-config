@@ -2,7 +2,7 @@
 # Live Image (BIOS boot)
 
 if [ ! -d isolinux ]; then
-    cd binary
+	cd binary
 fi
 
 cat >>isolinux/live.cfg <<END

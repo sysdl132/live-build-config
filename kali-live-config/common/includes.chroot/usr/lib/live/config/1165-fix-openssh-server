@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if grep -qw persistence /proc/cmdline; then
-    # With persistence enabled, don't modify the configuration, let the
-    # user be in charge...
-    exit 0
+	# With persistence enabled, don't modify the configuration, let the
+	# user be in charge...
+	exit 0
 fi
 
 # Allow PasswordAuthentification in sshd config
