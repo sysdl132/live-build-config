@@ -2,6 +2,7 @@
 
 # If a command fails, make the whole script exit
 set -e
+
 # Use return code for any command errors in part of a pipe
 set -o pipefail # Bashism
 
@@ -326,6 +327,7 @@ if [ "$ACTION" = "clean" ]; then
 	exit 0
 fi
 
+# Create image output location
 mkdir -p $TARGET_DIR/$TARGET_SUBDIR
 
 # Crate temporary working location
