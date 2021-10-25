@@ -3,5 +3,16 @@
 # Do not register it in inetd so that its status can be controlled
 # individually
 atftpd atftpd/use_inetd boolean false
+
 # Install wireshark setuid
 wireshark-common wireshark-common/install-setuid boolean true
+
+# Disable autorun with macchanger
+macchanger macchanger/automatically_run boolean false
+
+# Install kismet setuid
+kismet-capture-common kismet-capture-common/install-users string
+kismet-capture-common kismet-capture-common/install-setuid boolean true
+
+# Use own process for sslh
+sslh sslh/inetd_or_standalone select standalone
