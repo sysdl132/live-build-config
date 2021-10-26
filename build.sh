@@ -402,7 +402,7 @@ case "$IMAGE_TYPE" in
 		# Keep 686-pae udebs as we changed the default from 686
 		# to 686-pae in the debian-installer images
 		sed -i -e '/686-pae/d' \
-			$BASEDIR/data/$CODENAME/exclude-udebs-i386
+			"$BASEDIR/data/$CODENAME/exclude-udebs-i386"
 		[ $? -eq 0 ] || failure
 
 		# Configure the kali profile with the packages we want
