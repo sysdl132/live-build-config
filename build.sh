@@ -359,6 +359,9 @@ case "$IMAGE_TYPE" in
 		if [ $? -ne 0 ] || [ ! -e $IMAGE_NAME ]; then
 			failure
 		fi
+
+		cd ../
+		IMAGE_NAME="tmp/$IMAGE_NAME"
 	;;
 	installer)
 		# Override some debian-cd environment variables
