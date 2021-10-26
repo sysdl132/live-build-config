@@ -433,10 +433,10 @@ case "$IMAGE_TYPE" in
 			--dist $CODENAME \
 			--debian-mirror $kali_mirror
 		res=$?
-		cd ../../
 		if [ $res -ne 0 ] || [ ! -e $IMAGE_NAME ]; then
 			failure
 		fi
+		cd ../../
 	;;
 esac
 
