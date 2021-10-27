@@ -131,7 +131,7 @@ clean() {
 	cd tmp/
 	debug "Cleaning - lb clean (kali-live-config/common/lb)"
 	run_and_log $SUDO lb clean --purge
-	cd ../
+	cd ../ #cd tmp/
 	debug "Cleaning - umount"
 	check_umount "$(pwd)/tmp/chroot/dev/pts"
 	check_umount "$(pwd)/tmp/chroot/proc"
@@ -370,7 +370,7 @@ case "$IMAGE_TYPE" in
 			failure
 		fi
 
-		cd ../
+		cd ../ #cd tmp/
 		IMAGE_NAME="tmp/$IMAGE_NAME"
 	;;
 	installer)
@@ -446,7 +446,7 @@ case "$IMAGE_TYPE" in
 		if [ $res -ne 0 ] || [ ! -e $IMAGE_NAME ]; then
 			failure
 		fi
-		cd ../../
+		cd ../../ #cd tmp/common/
 	;;
 esac
 
