@@ -124,6 +124,7 @@ clean() {
 	# Installer
 	debug "Cleaning - installer"
 	run_and_log $SUDO rm -rf "$(pwd)/tmp/debian-cd"
+	[ $? -eq 0 ] || failure
 
 	# Live
 	mkdir -p tmp/
@@ -131,6 +132,7 @@ clean() {
 	cd tmp/
 	debug "Cleaning - lb clean (kali-live-config/common/lb)"
 	run_and_log $SUDO lb clean --purge
+	[ $? -eq 0 ] || failure
 	cd ../ #cd tmp/
 	debug "Cleaning - umount"
 	check_umount "$(pwd)/tmp/chroot/dev/pts"
@@ -139,6 +141,7 @@ clean() {
 
 	# Working directory
 	run_and_log $SUDO rm -rf "$(pwd)/tmp"
+	[ $? -eq 0 ] || failure
 }
 
 # check_install_program <binary> [<package-name>]
@@ -155,7 +158,9 @@ check_install_program() {
 	if ! command -v $bin >/dev/null 2>&1; then
 		debug "Missing: $package"
 		run_and_log $SUDO apt-get update -qq
+		[ $? -eq 0 ] || failure
 		run_and_log $SUDO apt-get -yqq install $package
+		[ $? -eq 0 ] || failure
 	fi
 }
 
@@ -339,9 +344,11 @@ fi
 
 # Create image output location
 mkdir -p $TARGET_DIR/$TARGET_SUBDIR
+[ $? -eq 0 ] || failure
 
 # Crate temporary working location
 mkdir -p tmp/
+[ $? -eq 0 ] || failure
 
 # Don't quit on any errors now
 set +e
