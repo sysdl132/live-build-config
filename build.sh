@@ -127,19 +127,21 @@ clean() {
 	[ $? -eq 0 ] || failure
 
 	# Live
+	debug "Cleaning - lb clean (kali-live-config/common/lb)"
 	mkdir -p tmp/
 	cp -aT kali-live-config/common/lb ./tmp/auto
 	cd tmp/
-	debug "Cleaning - lb clean (kali-live-config/common/lb)"
 	run_and_log $SUDO lb clean --purge
 	[ $? -eq 0 ] || failure
 	cd ../ #cd tmp/
+
 	debug "Cleaning - umount"
 	check_umount "$(pwd)/tmp/chroot/dev/pts"
 	check_umount "$(pwd)/tmp/chroot/proc"
 	check_umount "$(pwd)/tmp/chroot/sys"
 
 	# Working directory
+	debug "Cleaning - ./tmp/"
 	run_and_log $SUDO rm -rf "$(pwd)/tmp"
 	[ $? -eq 0 ] || failure
 }
@@ -355,8 +357,8 @@ set +e
 
 case "$IMAGE_TYPE" in
 	live)
-		# Copy over any files to use rather than default template for live-build
 		debug "Stage 1/3 - Preparation"
+		# Copy over any files to use rather than default template for live-build
 		cp -aT kali-live-config/common/lb ./tmp/auto
 		[ $? -eq 0 ] || failure
 		# Check for mirror
