@@ -109,6 +109,15 @@ debug() {
 	fi
 }
 
+# check_umount <path>
+check_umount() {
+	if [ -e "$1" ]; then
+		debug "umount $1"
+		run_and_log $SUDO umount -l "$1"
+		[ $? -eq 0 ] || failure
+	fi
+}
+
 clean() {
 	debug "Cleaning"
 
@@ -123,9 +132,10 @@ clean() {
 	debug "Cleaning - lb clean (kali-live-config/common/lb)"
 	run_and_log $SUDO lb clean --purge
 	cd ../
-	[ -e "$(pwd)/tmp/chroot/dev/pts" ] && run_and_log $SUDO umount -l "$(pwd)/tmp/chroot/dev/pts"
-	[ -e "$(pwd)/tmp/chroot/proc" ] && run_and_log $SUDO umount -l "$(pwd)/tmp/chroot/proc"
-	[ -e "$(pwd)/tmp/chroot/sys" ] && run_and_log $SUDO umount -l "$(pwd)/tmp/chroot/sys"
+	debug "Cleaning - umount"
+	check_umount "$(pwd)/tmp/chroot/dev/pts"
+	check_umount "$(pwd)/tmp/chroot/proc"
+	check_umount "$(pwd)/tmp/chroot/sys"
 
 	# Working directory
 	run_and_log $SUDO rm -rf "$(pwd)/tmp"
